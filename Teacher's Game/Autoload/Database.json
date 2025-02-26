@@ -1,0 +1,160 @@
+{
+ "0":{
+  "texture" : "",
+  "cantitate":0,
+  "number":0,
+  "nume":""
+	 },
+
+ "1":{
+  "texture" : "Egg_item.png",
+  "cantitate":1,
+  "number":1,
+  "nume":"ou",
+	 },
+	
+"2":{
+	"texture":"axe.png",
+	"cantitate":1,
+	"number":2,
+	"nume":"topor",
+	},
+	
+"3":{
+	"texture":"grau.png",
+	"cantitate":1,
+	"number":3,
+	"nume":"seminte grau",
+	},
+	
+"4":{
+	"texture":"grau_de_recoltat.png",
+	"cantitate":1,
+	"number":4,
+	"nume":"grau",
+	},
+	
+"5":{
+	"texture":"vinete_seminte.png",
+	"cantitate":1,
+	"number":5,
+	"nume":"seminte vinete",
+	},
+	
+"6":{
+	"texture":"lemn.png",
+	"cantitate":1,
+	"number":6,
+	"nume":"lemn",
+	},
+	
+"7":{
+	"texture":"mar.png",
+	"cantitate":1,
+	"number":7,
+	"nume":"mar",
+	},
+	
+"8":{
+	"texture":"berry.png",
+	"cantitate":1,
+	"number":8,
+	"nume":"berry",
+	},
+"9":{
+	"texture":"hoe.png",
+	"cantitate":1,
+	"number":9,
+	"nume":"hoe",
+	},
+"10":{
+	"texture":"pickaxe.png",
+	"cantitate":1,
+	"number":10,
+	"nume":"pickaxe",
+	},
+"11":{
+	"texture":"piatra-item.png",
+	"cantitate":1,
+	"number":11,
+	"nume":"piatra",
+	},
+"12":{
+	"texture":"gard_pivot.png",
+	"cantitate":1,
+	"number":12,
+	"nume":"gard",
+	},
+"13":{
+	"texture":"shield.png",
+	"cantitate":1,
+	"number":13,
+	"nume":"scut",
+	},
+"14":{
+	"texture":"gambling_mace.png",
+	"cantitate":1,
+	"number":14,
+	"nume":"Buzduganul norocului",
+	},
+"15":{
+	"texture":"pie.png",
+	"cantitate":1,
+	"number":15,
+	"nume":"apple pie",
+	},
+"16":{
+	"texture":"podea_tile.png",
+	"cantitate":1,
+	"number":16,
+	"nume":"podea",
+	},
+"17":{
+	"texture":"roof.png",
+	"cantitate":1,
+	"number":17,
+	"nume":"roof",
+	},
+"18":{
+	"texture":"backpack.png",
+	"cantitate":1,
+	"number":18,
+	"nume":"backpack",
+	},
+"19":{
+	"texture":"blue_lightBulb.png",
+	"cantitate":1,
+	"number":19,
+	"nume":"bec albastru",
+	},
+"20":{
+	"texture":"red_lightBulb.png",
+	"cantitate":1,
+	"number":20,
+	"nume":"bec rosu",
+	},
+"21":{
+	"texture":"orange_lightBulb.png",
+	"cantitate":1,
+	"number":21,
+	"nume":"bec portocaliu",
+	},
+"22":{
+	"texture":"water_can.png",
+	"cantitate":1,
+	"number":22,
+	"nume":"stropitoare",
+	},
+"23":{
+	"texture":"lamp.png",
+	"cantitate":1,
+	"number":23,
+	"nume":"felinar",
+	},
+"24":{
+	"texture":"graunte.png",
+	"cantitate":1,
+	"number":24,
+	"nume":"graunte",
+	},
+}
