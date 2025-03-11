@@ -3224,8 +3224,6 @@ fill_to = Vector2(0.914474, 0.177632)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
-collision_layer = 3
-collision_mask = 3
 slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 0
