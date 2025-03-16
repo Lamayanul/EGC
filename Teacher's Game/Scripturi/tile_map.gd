@@ -10,6 +10,13 @@ func _ready():
 func _process(delta):
 	if player and is_instance_valid(player):
 		pass
+	var player_pos = player.global_position
+	var player_cell = local_to_map(player_pos)
+	var tile_data_player = $floor.get_cell_tile_data(player_cell)
+	if tile_data_player and tile_data_player.get_custom_data("roof"): 
+		$floor.modulate = Color(0, 0, 0, 0) 
+	else:
+		$floor.modulate = Color(1, 1, 1, 1)
 
 
 		
@@ -34,6 +41,7 @@ func switch_floor():
 		$items.visible = true
 		$"../TileMap2/first_floor".visible = false
 		$"../TileMap2/items_2".visible=false
+		$floor.visible=true
 		player.z_index=0
 		
 	else:
@@ -41,6 +49,7 @@ func switch_floor():
 		$items.visible = false
 		$"../TileMap2/first_floor".visible = true
 		$"../TileMap2/items_2".visible=true
+		$floor.visible=false
 		player.z_index=2
 		
 		
@@ -48,3 +57,5 @@ func switch_floor():
 
 func _on_area_principal_door(body: Node2D) -> void:
 	pass
+	
+	

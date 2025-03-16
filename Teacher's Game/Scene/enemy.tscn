@@ -1163,8 +1163,6 @@ radius = 24.0208
 [node name="CharacterBody2D" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -5)
-collision_layer = 7
-collision_mask = 7
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_8c6dx")
@@ -1221,9 +1219,13 @@ shape = SubResource("CircleShape2D_xey0k")
 shape = SubResource("CircleShape2D_brlc1")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
 path_max_distance = 50.0
 avoidance_enabled = true
 debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
 [connection signal="timeout" from="color" to="." method="_on_color_timeout"]
@@ -1232,3 +1234,4 @@ debug_enabled = true
 [connection signal="body_entered" from="atack_zone" to="." method="_on_atack_zone_body_entered"]
 [connection signal="body_exited" from="atack_zone" to="." method="_on_atack_zone_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

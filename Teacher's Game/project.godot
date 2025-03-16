@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ItemData="*res://Autoload/Database.gd"
 DialogueManager="*res://Scene/dialogue_manager.tscn"
+WaypointManager="*res://Scripturi/waypoints.gd"
 
 [global_group]
 
@@ -26,16 +27,14 @@ enemy_hitbox=""
 player_hitbox=""
 arma=""
 LightSource=""
-scut=""
 player_char=""
 player=""
-gaina=""
-chick=""
 no_inv=""
 pillar=""
 lum_item=""
 item=""
 layer=""
+loc=""
 
 [input]
 
