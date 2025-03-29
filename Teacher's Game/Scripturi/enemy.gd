@@ -26,6 +26,7 @@ var waiting = false
 var at_destination = false  
 
 func _ready():
+	await get_tree().process_frame
 	healthbar_enemy.value = 0
 	add_to_group("enemy_hitbox")
 	call_deferred("seeker_setup")
