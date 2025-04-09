@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=147 format=4 uid="uid://brg7vyjjrwx3t"]
 
 [ext_resource type="Texture2D" uid="uid://demwg6nskrbp8" path="res://Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="1_okv3e"]
@@ -5801,6 +5802,13 @@ item_cantitate = 5
 [connection signal="body_exited" from="TileMap/ground_floor2/corp-D" to="TileMap" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="TileMap/ground_floor2/Camin" to="TileMap" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="TileMap/ground_floor2/Camin" to="TileMap" method="_on_area_2d_body_exited"]
+[node name="CorpD" parent="." instance=ExtResource("52_n280c")]
+position = Vector2(-301, -175)
+
+[connection signal="body_entered" from="TileMap/ground_floor2/Area2D" to="TileMap" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="TileMap/ground_floor2/Area2D" to="TileMap" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="TileMap/ground_floor2/Area2D2" to="TileMap" method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="TileMap/ground_floor2/Area2D2" to="TileMap" method="_on_area_2d_2_body_exited"]
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="player/CanvasLayer/healthbar_player" to="player/CanvasLayer/healthbar_player" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="player/CanvasLayer/healthbar_player" to="player/CanvasLayer/healthbar_player" method="_on_mouse_exited"]
