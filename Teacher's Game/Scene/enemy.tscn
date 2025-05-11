@@ -1174,6 +1174,7 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_6p5mf")
+disabled = true
 
 [node name="enemy_hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
 
