@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpmcycx2pfwqk"]
+
+[ext_resource type="Script" path="res://Scripturi/fall_item.gd" id="1_hxvwd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6rwn"]
+size = Vector2(27, 20)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(15, 12)
+script = ExtResource("1_hxvwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v6rwn")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -15.0
+offset_top = -11.0
+offset_right = 15.0
+offset_bottom = 12.0

@@ -5,7 +5,7 @@ class_name tilemap
 var etaj = 0  
 var can_change_floor = false  # Variabilă care determină dacă putem schimba etajele
 
-func _process(delta):
+func _process(_delta):
 	if player and is_instance_valid(player):
 		check_roof()
 

@@ -16,6 +16,7 @@ var lastPosition = Vector2(0, 1)
 @onready var player_hitbox = get_node("/root/world/player/player_hitbox")
 @onready var enemy_icon = $"../player/CanvasLayer/healthbar_enemy/enemy_icon"
 @onready var healthbar_enemy = $"../player/CanvasLayer/healthbar_enemy"
+@onready var inv = get_node("/root/world/Inventar/Inv")
 var interact = false
 @export var target: Node2D = null
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
@@ -24,12 +25,48 @@ var current_waypoint = 0
 @onready var timer: Timer = $Timer
 var waiting = false
 var at_destination = false  
+var interact_stud = false
+var id_item_get = ""
+var id_item_provide=""
+@onready var list_quest = get_node("/root/world/Inventar/List_quest")
+
+var available_names := [
+	"Ana", "Bogdan", "Cristina", "Darius", "Elena",
+	"Florin", "Gabriela", "Horia", "Ioana", "Ionut",
+	"Larisa", "Mihai", "Nicoleta", "Ovidiu", "Patricia",
+	"Radu", "Simona", "Teodor", "Valentina", "Zoran"
+]
+var rng := RandomNumberGenerator.new()
+var nume= ""
 
 func _ready():
+	randomize()
+	var rnd = randi() % 10 + 1
+	var rndi = randi() % 10 + 1
+	id_item_get = str(rnd)
+	id_item_provide=str(rndi)
+
+	rng.randomize()
+	if available_names.size() > 0:
+		var idx = rng.randi_range(0, available_names.size() - 1)
+		nume = available_names[idx]
+		$CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/Label.text = "[center]" + nume
+		available_names.remove_at(idx)
+	print("Nume unic: ", nume)
+	var slot3 = $Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3
+	slot3.set_property({
+		 "TEXTURE": load("res://assets/" + ItemData.get_texture(id_item_get)),
+		 "CANTITATE": 1,
+		 "NUMBER": int(id_item_get),
+		 "NUME": ItemData.get_nume(id_item_get)
+	 })
+
 	await get_tree().process_frame
 	healthbar_enemy.value = 0
 	add_to_group("enemy_hitbox")
 	call_deferred("seeker_setup")
+
+	get_quest()
 
 
 	for area in get_tree().get_nodes_in_group("loc"):
@@ -56,6 +93,11 @@ func _ready():
 		navigation_agent_2d.set_target_position(waypoints[current_waypoint])
 
 func _physics_process(_delta):
+	if interact_stud:
+		velocity = Vector2.ZERO
+		animated_sprite_2d.play("idle")
+		return
+
 	if waypoints.is_empty() or waiting:
 		return
 
@@ -116,16 +158,33 @@ func _on_color_timeout():
 func _on_change_direction_timeout():
 	select_new_direction()
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("interact") and interact:
-		moveDirection = Vector2.ZERO
-		animated_sprite_2d.play("idle")
-
+		if not interact_stud:
+			# ➡️ intru în interacțiune: afişez UI, opresc agentul și animația
+			interact_stud = true
+			$CanvasLayer.visible = true
+			# dezactivez agentul de nav
+			# mă asigur că stau pe loc
+			velocity = Vector2.ZERO
+			animated_sprite_2d.play("idle")
+		else:
+			# ⬅️ ies din interacțiune: ascund UI și reiau nav
+			interact_stud = false
+			$CanvasLayer.visible = false
+			# reactivez agentul de nav și îi dau target-ul curent
+					
 func _on_atack_zone_body_entered(body: Node2D) -> void:
-	interact = true
+	if body == player:
+		interact = true
+
 
 func _on_atack_zone_body_exited(body: Node2D) -> void:
-	interact = false
+	if body == player:
+		interact_stud=false
+		$CanvasLayer.visible = false
+		$Quest.visible=false
+		interact = false
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
@@ -155,3 +214,31 @@ func _on_timer_timeout() -> void:
 	WaypointManager.occupy_waypoint(waypoints[current_waypoint], self)
 	navigation_agent_2d.set_target_position(waypoints[current_waypoint])
 	timer.stop()
+	
+
+func get_quest():
+	$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = "I want "+ ItemData.get_nume(id_item_provide) + " and you get "+ ItemData.get_nume(id_item_get) 
+	
+	
+func _on_button_pressed() -> void:
+	$Quest.visible=!$Quest.visible
+
+
+func _on_accept_pressed() -> void:
+	$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = "[center]I will wait for it"
+	$Quest/PanelContainer/VBoxContainer/HBoxContainer/Accept.visible = false
+	$Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer.visible=true
+
+	
+func _on_decline_pressed() -> void:
+	$Quest/PanelContainer.visible=false
+
+
+func _on_offer_pressed() -> void:
+	if $Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2.item_id==id_item_provide:
+		inv.add_item($Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3.item_id,1)
+		$Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2.clear_item()
+		$Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3.clear_item()
+		$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = ""
+		$Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer.visible=false
+		$Quest/PanelContainer/VBoxContainer/HBoxContainer/Accept.visible = true
