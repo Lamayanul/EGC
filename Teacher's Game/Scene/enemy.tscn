@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://dn1osqamgorag"]
+[gd_scene load_steps=125 format=3 uid="uid://dn1osqamgorag"]
 
 [ext_resource type="Script" path="res://Scripturi/enemy.gd" id="1_8c6dx"]
 [ext_resource type="Texture2D" uid="uid://b4otyj2854hm1" path="res://Base Character - Premium/basic/death.png" id="1_inn2y"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dgxx50eriayau" path="res://Base Character - Premium/attack/sword.png" id="2_a767a"]
 [ext_resource type="Texture2D" uid="uid://c3skfildne1id" path="res://Base Character - Premium/basic/walk.png" id="3_1hsc2"]
 [ext_resource type="Texture2D" uid="uid://huvx4f8x78sp" path="res://Base Character - Premium/basic/run.png" id="5_7tyfx"]
+[ext_resource type="Texture2D" uid="uid://ds7di32kou2ro" path="res://Tiny Wonder Farm Free/characters/main character/portrait female.png" id="7_v1r7o"]
+[ext_resource type="PackedScene" uid="uid://bgc7bfs3whjaw" path="res://User/slot_container.tscn" id="8_1s7py"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6p5mf"]
 size = Vector2(7, 2)
@@ -1160,6 +1162,9 @@ radius = 47.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_brlc1"]
 radius = 24.0208
 
+[sub_resource type="Theme" id="Theme_2wrd2"]
+default_font_size = 20
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -5)
@@ -1174,6 +1179,7 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_6p5mf")
+disabled = true
 
 [node name="enemy_hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
 
@@ -1225,7 +1231,214 @@ avoidance_enabled = true
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 70.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -302.0
+offset_right = 302.0
+offset_bottom = 421.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(600, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_2wrd2")
+bbcode_enabled = true
+text = "[center]Buna
+"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_v1r7o")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Say something"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "Quest"
+
+[node name="Button2" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "Info"
+
+[node name="Quest" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="Quest"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -500.944
+offset_top = -119.5
+offset_bottom = 119.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Quest/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Quest/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]"
+
+[node name="HBoxContainer2" type="Panel" parent="Quest/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SlotContainer2" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("8_1s7py")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+anchor_left = 0.17
+anchor_right = 0.17
+offset_left = -24.528
+offset_top = -40.0
+offset_right = 24.472
+offset_bottom = -8.0
+
+[node name="TextureRect2" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2/TextureHolder" index="0"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.812
+anchor_bottom = -0.812
+offset_top = -0.0159988
+offset_right = 67.0
+offset_bottom = 66.984
+
+[node name="TextureRect" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2/TextureHolder" index="1"]
+anchors_preset = -1
+anchor_top = -0.812
+anchor_right = 0.0
+anchor_bottom = -0.812
+offset_top = -0.0159988
+offset_right = 67.0
+offset_bottom = 66.984
+
+[node name="TextureRect3" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2/TextureHolder" index="2"]
+anchors_preset = -1
+anchor_top = -0.812
+anchor_right = 0.0
+anchor_bottom = -0.812
+offset_top = -0.0159988
+offset_right = 67.0
+offset_bottom = 66.984
+
+[node name="SlotContainer3" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("8_1s7py")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.738
+anchor_right = 0.738
+offset_left = -24.528
+offset_top = -40.0
+offset_right = 24.472
+offset_bottom = -8.0
+
+[node name="TextureRect2" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3/TextureHolder" index="0"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = -0.812
+anchor_right = 0.041
+anchor_bottom = -0.812
+offset_left = -0.00900006
+offset_top = -3.016
+offset_right = 66.991
+offset_bottom = 63.984
+
+[node name="TextureRect" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3/TextureHolder" index="1"]
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = -0.812
+anchor_right = 0.041
+anchor_bottom = -0.812
+offset_left = -0.00900006
+offset_top = -3.016
+offset_right = 66.991
+offset_bottom = 63.984
+
+[node name="TextureRect3" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3/TextureHolder" index="2"]
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = -0.812
+anchor_right = 0.041
+anchor_bottom = -0.812
+offset_left = -0.00900006
+offset_top = -3.016
+offset_right = 66.991
+offset_bottom = 63.984
+
+[node name="TextEdit" type="RichTextLabel" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_right = 0.501
+offset_left = -123.5
+offset_top = -40.0
+offset_right = 95.5
+offset_bottom = -8.0
+bbcode_enabled = true
+text = "[center]<--you provide | you get-->"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Quest/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Accept" type="Button" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Accept"
+
+[node name="Decline" type="Button" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Decline"
+
+[node name="Offer" type="Button" parent="Quest/PanelContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Offer Item"
 
 [connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
 [connection signal="timeout" from="color" to="." method="_on_color_timeout"]
@@ -1235,3 +1448,10 @@ wait_time = 5.0
 [connection signal="body_exited" from="atack_zone" to="." method="_on_atack_zone_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Quest/PanelContainer/VBoxContainer/HBoxContainer/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="Quest/PanelContainer/VBoxContainer/HBoxContainer/Decline" to="." method="_on_decline_pressed"]
+[connection signal="pressed" from="Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer" to="." method="_on_offer_pressed"]
+
+[editable path="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2"]
+[editable path="Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3"]

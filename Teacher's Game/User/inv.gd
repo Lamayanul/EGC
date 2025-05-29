@@ -149,7 +149,7 @@ func update_selector_position(slot: Slot):
 var slots = []
 
 #---------------------------------------input-uri-diverse----------------------------------------------------
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("drop"):
 		drop_selected_item()
 	if Input.is_action_just_pressed("drop_1"):

@@ -87,7 +87,9 @@ func get_number()->int:
 func get_nume()->String:
 	return property.get("NUME","")
 	
-	
+func id_to_nume(ID):
+	if ItemData.has_method("get_nume"):
+		return ItemData.get_nume(ID)
 	
 func _get_drag_data(_at_position):
 	

@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvgnicvsginkg"]
+
+[ext_resource type="Script" path="res://Scripturi/gac.gd" id="1_004d4"]
+
+[sub_resource type="Gradient" id="Gradient_6e7t3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mo1xc"]
+gradient = SubResource("Gradient_6e7t3")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_004d4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.603922)
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.069
+anchor_right = 0.961
+anchor_bottom = 0.924
+offset_left = -0.0159988
+offset_top = 0.287994
+offset_right = -0.0720215
+offset_bottom = 0.247986
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_mo1xc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.278
+anchor_right = 0.497
+anchor_bottom = 0.278
+offset_left = -337.544
+offset_top = -60.144
+offset_right = 338.456
+offset_bottom = 59.856
+grow_horizontal = 2
+bbcode_enabled = true
+
+[node name="TextEdit" type="TextEdit" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.533
+anchor_right = 0.5
+anchor_bottom = 0.533
+offset_left = -80.0
+offset_top = -25.384
+offset_right = 84.0
+offset_bottom = 25.616
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.184
+anchor_top = 0.533
+anchor_right = 0.184
+anchor_bottom = 0.533
+offset_left = -79.968
+offset_top = -25.384
+offset_right = 81.032
+offset_bottom = 25.616
+grow_vertical = 2
+
+[node name="TextEdit3" type="TextEdit" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.807
+anchor_top = 0.533
+anchor_right = 0.807
+anchor_bottom = 0.536
+offset_left = -82.6641
+offset_top = -21.384
+offset_right = 83.3359
+offset_bottom = 23.672
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ResultLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.806
+anchor_right = 0.185
+anchor_bottom = 0.806
+offset_left = -47.12
+offset_top = -25.288
+offset_right = 47.88
+offset_bottom = 24.712
+
+[node name="SubmitButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.788
+anchor_top = 0.806
+anchor_right = 0.788
+anchor_bottom = 0.806
+offset_left = -70.7761
+offset_top = -25.288
+offset_right = 71.2239
+offset_bottom = 24.712
+text = "Submit"

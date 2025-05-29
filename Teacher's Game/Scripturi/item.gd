@@ -70,8 +70,8 @@ func set_cantitate(cantitate: int):
 func get_cantiti():
 	return item_cantitate
 	
-func set_lumina(ID):
-	if ID=="23":
+func set_lumina(Id):
+	if Id=="23":
 		$PointLight2D.visible=true
 		$PointLight2D.enabled=true
 		print("Aprind lumina!")

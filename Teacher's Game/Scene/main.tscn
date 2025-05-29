@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgcki1g7acu6l"]
+
+[ext_resource type="Script" path="res://Scripturi/main.gd" id="1_6jbav"]
+[ext_resource type="PackedScene" uid="uid://dpmcycx2pfwqk" path="res://Scene/fall_item.tscn" id="2_v18wt"]
+
+[sub_resource type="Gradient" id="Gradient_r4aha"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uuj8t"]
+gradient = SubResource("Gradient_r4aha")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_6jbav")
+FallingItemScene = ExtResource("2_v18wt")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.098
+anchor_top = 0.097
+anchor_right = 0.098
+anchor_bottom = 0.097
+offset_left = -73.896
+offset_top = -21.856
+offset_right = 73.104
+offset_bottom = 22.144
+
+[node name="PenaltyLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.886
+anchor_top = 0.097
+anchor_right = 0.886
+anchor_bottom = 0.097
+offset_left = -52.6721
+offset_top = -21.856
+offset_right = 53.3279
+offset_bottom = 22.144
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.52549)
+show_behind_parent = true
+offset_left = 39.0
+offset_top = 34.0
+offset_right = 1112.0
+offset_bottom = 616.0
+texture = SubResource("GradientTexture2D_uuj8t")

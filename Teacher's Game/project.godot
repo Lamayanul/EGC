@@ -21,6 +21,11 @@ ItemData="*res://Autoload/Database.gd"
 DialogueManager="*res://Scene/dialogue_manager.tscn"
 WaypointManager="*res://Scripturi/waypoints.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+gdscript/warnings/integer_division=0
+
 [global_group]
 
 enemy_hitbox=""

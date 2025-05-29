@@ -1,0 +1,278 @@
+[gd_scene load_steps=5 format=3 uid="uid://25gf5ceb7luk"]
+
+[ext_resource type="Script" path="res://Scripturi/mate.gd" id="1_ihyjf"]
+
+[sub_resource type="Gradient" id="Gradient_7akn4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l2tgy"]
+gradient = SubResource("Gradient_7akn4")
+
+[sub_resource type="Theme" id="Theme_1t4va"]
+default_base_scale = 15.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ihyjf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.380392)
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.091
+anchor_right = 0.88
+anchor_bottom = 0.881
+offset_left = -0.17601
+offset_top = 0.0319977
+offset_right = 0.239929
+offset_bottom = 0.112
+texture = SubResource("GradientTexture2D_l2tgy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -193.0
+offset_right = 77.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "3𝑥−7=11"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "(x+2)/3+5=9"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "4(x−3)+x=8"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "2^x=16"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "√1681"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "x+5=12"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "4𝑥+2=10
+"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "−3x=9"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "2+3x=11"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer10"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme = SubResource("Theme_1t4va")
+bbcode_enabled = true
+text = "5−x=2"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="TextureRect/VBoxContainer/HBoxContainer10"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.787
+anchor_top = 0.782
+anchor_right = 0.787
+anchor_bottom = 0.782
+offset_left = -47.6241
+offset_top = -22.7361
+offset_right = 48.3759
+offset_bottom = 22.2639
+grow_horizontal = 0
+grow_vertical = 0
+text = "Submit"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.227
+anchor_top = 0.197
+anchor_right = 0.227
+anchor_bottom = 0.197
+offset_left = -41.504
+offset_top = -11.656
+offset_right = 38.496
+offset_bottom = 11.344
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.227
+anchor_top = 0.254
+anchor_right = 0.227
+anchor_bottom = 0.254
+offset_left = -41.504
+offset_top = -11.592
+offset_right = 38.496
+offset_bottom = 11.408
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
