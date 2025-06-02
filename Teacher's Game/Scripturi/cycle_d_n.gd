@@ -6,7 +6,7 @@ const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 #@onready var minut: LineEdit = $CanvasLayer/Minut
 @onready var Hour: Label = %Hour
 @onready var Minute: Label = %Minute
-
+var ora_gasita= false
 var day_counter = 0:
 	set(value):
 		day_counter = value
@@ -42,6 +42,9 @@ func _physics_process(_delta):
 	var period = "AM" if hour_24 < 12 else "PM"
 
 	Hour.text = str(hour_12).pad_zeros(2) + " " + period
+	if Hour.text == "01 PM":
+		ora_gasita=true
+
 	Minute.text = str(minute).pad_zeros(2)
 
 	# Zi / Noapte

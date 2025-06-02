@@ -4,8 +4,8 @@ extends Node2D
 @export var spawn_interval := 0.5
 
 @onready var spawn_timer   := $SpawnTimer
-@onready var score_label   := $CanvasLayer/ScoreLabel
-@onready var penalty_label := $CanvasLayer/PenaltyLabel
+@onready var score_label   := $"../ScoreLabel"
+@onready var penalty_label := $"../PenaltyLabel"
 
 var score   := 0
 var penalty := 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=125 format=3 uid="uid://dn1osqamgorag"]
 
-[ext_resource type="Script" path="res://Scripturi/enemy.gd" id="1_8c6dx"]
+[ext_resource type="Script" uid="uid://dckjkmog21vem" path="res://Scripturi/enemy.gd" id="1_8c6dx"]
 [ext_resource type="Texture2D" uid="uid://b4otyj2854hm1" path="res://Base Character - Premium/basic/death.png" id="1_inn2y"]
 [ext_resource type="Texture2D" uid="uid://c7y4nlm26ofww" path="res://Base Character - Premium/basic/idle.png" id="2_423kg"]
 [ext_resource type="Texture2D" uid="uid://dgxx50eriayau" path="res://Base Character - Premium/attack/sword.png" id="2_a767a"]
@@ -1145,15 +1145,15 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h6wi7"]
 _data = {
-"RESET": SubResource("Animation_v1oxp"),
-"attack-down": SubResource("Animation_7ymt1"),
-"attack-left": SubResource("Animation_jnt1r"),
-"attack-right": SubResource("Animation_hw77a"),
-"attack-up": SubResource("Animation_5f7a0"),
-"run-down": SubResource("Animation_tnyqr"),
-"run-left": SubResource("Animation_8g2uj"),
-"run-right": SubResource("Animation_286lk"),
-"run-up": SubResource("Animation_u0p57")
+&"RESET": SubResource("Animation_v1oxp"),
+&"attack-down": SubResource("Animation_7ymt1"),
+&"attack-left": SubResource("Animation_jnt1r"),
+&"attack-right": SubResource("Animation_hw77a"),
+&"attack-up": SubResource("Animation_5f7a0"),
+&"run-down": SubResource("Animation_tnyqr"),
+&"run-left": SubResource("Animation_8g2uj"),
+&"run-right": SubResource("Animation_286lk"),
+&"run-up": SubResource("Animation_u0p57")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xey0k"]
@@ -1210,7 +1210,7 @@ offset = Vector2(0, 2)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_h6wi7")
+&"": SubResource("AnimationLibrary_h6wi7")
 }
 speed_scale = 2.0
 
@@ -1231,7 +1231,7 @@ avoidance_enabled = true
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 70.0
+wait_time = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -1241,7 +1241,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -302.0
-offset_right = 302.0
+offset_right = 501.0
 offset_bottom = 421.0
 grow_horizontal = 2
 
@@ -1272,9 +1272,10 @@ texture = ExtResource("7_v1r7o")
 expand_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-fit_content = true
+bbcode_enabled = true
+text = "[center]"
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)

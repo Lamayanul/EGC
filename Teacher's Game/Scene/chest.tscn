@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://btlog1vd6ddq3"]
 
-[ext_resource type="Script" path="res://Scripturi/chest.gd" id="1_h85j7"]
+[ext_resource type="Script" uid="uid://c6iijxja3ykic" path="res://Scripturi/chest.gd" id="1_h85j7"]
 [ext_resource type="Texture2D" uid="uid://8kpks67jhh4y" path="res://Sprout Lands - Sprites - Basic pack/Chest/Chest11.png" id="1_xll6t"]
 [ext_resource type="PackedScene" uid="uid://bgc7bfs3whjaw" path="res://User/slot_container.tscn" id="3_robgt"]
 
@@ -186,9 +186,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sdpss"]
 _data = {
-"RESET": SubResource("Animation_bvoxy"),
-"close": SubResource("Animation_xjaob"),
-"open": SubResource("Animation_qduor")
+&"RESET": SubResource("Animation_bvoxy"),
+&"close": SubResource("Animation_xjaob"),
+&"open": SubResource("Animation_qduor")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77pdw"]

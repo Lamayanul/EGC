@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://wce5a7wkc8oc"]
 
-[ext_resource type="Script" path="res://Scripturi/barca.gd" id="1_01ybg"]
+[ext_resource type="Script" uid="uid://blohvg0avdkbw" path="res://Scripturi/barca.gd" id="1_01ybg"]
 [ext_resource type="Texture2D" uid="uid://b2mr4b5nkasqr" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - premium pack/Objects/Boats.png" id="1_40io2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xms1a"]
@@ -399,10 +399,10 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxiv0"]
 _data = {
-"RESET": SubResource("Animation_t2nxh"),
-"idle": SubResource("Animation_bhg2x"),
-"idle-dez": SubResource("Animation_rhkak"),
-"sail": SubResource("Animation_xjw6s")
+&"RESET": SubResource("Animation_t2nxh"),
+&"idle": SubResource("Animation_bhg2x"),
+&"idle-dez": SubResource("Animation_rhkak"),
+&"sail": SubResource("Animation_xjw6s")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5la"]

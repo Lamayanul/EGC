@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://25gf5ceb7luk"]
 
-[ext_resource type="Script" path="res://Scripturi/mate.gd" id="1_ihyjf"]
+[ext_resource type="Script" uid="uid://vunqb4jutea3" path="res://Scripturi/mate.gd" id="1_ihyjf"]
 
 [sub_resource type="Gradient" id="Gradient_7akn4"]
 offsets = PackedFloat32Array(0)
@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_7akn4")
 [sub_resource type="Theme" id="Theme_1t4va"]
 default_base_scale = 15.0
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" groups=["proba"]]
 script = ExtResource("1_ihyjf")
 
 [node name="TextureRect" type="TextureRect" parent="."]

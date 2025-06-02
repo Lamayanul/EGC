@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvgnicvsginkg"]
 
-[ext_resource type="Script" path="res://Scripturi/gac.gd" id="1_004d4"]
+[ext_resource type="Script" uid="uid://dbmi3mao0oh06" path="res://Scripturi/gac.gd" id="1_004d4"]
 
 [sub_resource type="Gradient" id="Gradient_6e7t3"]
 offsets = PackedFloat32Array(0)
@@ -9,7 +9,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mo1xc"]
 gradient = SubResource("Gradient_6e7t3")
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" groups=["proba"]]
 script = ExtResource("1_004d4")
 
 [node name="TextureRect" type="TextureRect" parent="."]

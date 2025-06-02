@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+var can_move = true
 #---------------------------enemy-player-health-control---------------------------------------------------
 var player_alive=true
 @onready var healthbar = $CanvasLayer/healthbar
@@ -25,7 +25,7 @@ var current_state = "idle"
 @onready var color_rect = $"../Inventar/ColorRect"
 var info:String=""
 @onready var player_icon = $CanvasLayer/healthbar_player/player_icon
-
+var study=false
 #-------------------------------------Player-stats----------------------------------------------
 var Speed = 50
 @export var health=100
@@ -51,6 +51,11 @@ func _ready():
 
 #------------------------------_physics_process()------------------------------------------------------
 func _physics_process(delta):
+	if not can_move:
+		velocity = Vector2.ZERO
+		animation_player.play("idle-down")
+		return
+		
 	if health<=0:
 		health=0
 		player_alive=false
@@ -185,9 +190,30 @@ func _on_area_2d_mouse_entered():
 	info_label.visible=true
 	color_rect.visible=true
 	info_label.text=info
-	
+
+
 
 func _on_area_2d_mouse_exited():
 	info_label.visible=false
 	info_label.text=""
 	color_rect.visible=false
+
+
+
+func _on_loc_1_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		study=true
+
+
+func _on_loc_1_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		study=false
+		
+func _input(event):
+	if event.is_action_pressed("ui_select_1"): # vezi dacă ai definit în Input Map o acțiune "ui_select_1" pentru tasta 1, altfel folosește codul de mai jos
+		if study:
+			var probe_list = get_tree().get_nodes_in_group("proba")
+			if probe_list.size() > 0:
+				print("daaaaawwwwwwwwwwwwwwwwwwwwwwwwwaaaaaaaaaaaaaaaaaaa1")
+				var idx = randi() % probe_list.size()
+				probe_list[idx].visible = true

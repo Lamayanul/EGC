@@ -24,11 +24,18 @@ var waypoints = []
 var current_waypoint = 0
 @onready var timer: Timer = $Timer
 var waiting = false
-var at_destination = false  
+var at_destination = false
 var interact_stud = false
 var id_item_get = ""
-var id_item_provide=""
+var id_item_provide = ""
 @onready var list_quest = get_node("/root/world/Inventar/List_quest")
+@onready var hour = get_node("/root/world/Cycle_d_n/CanvasLayer/VBoxContainer/HBoxContainer/%Hour")
+@onready var ora = get_node("/root/world/Cycle_d_n")
+@export var ai_personality: String = ""
+
+
+@onready var aiText: RichTextLabel = $CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/RichTextLabel
+@onready var textEdit: TextEdit = $CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/TextEdit
 
 var available_names := [
 	"Ana", "Bogdan", "Cristina", "Darius", "Elena",
@@ -39,12 +46,17 @@ var available_names := [
 var rng := RandomNumberGenerator.new()
 var nume= ""
 
+# Flags pentru cămin
+var merge_la_camin = false
+var in_camin = false
+
 func _ready():
+	
 	randomize()
 	var rnd = randi() % 10 + 1
 	var rndi = randi() % 10 + 1
 	id_item_get = str(rnd)
-	id_item_provide=str(rndi)
+	id_item_provide = str(rndi)
 
 	rng.randomize()
 	if available_names.size() > 0:
@@ -53,13 +65,14 @@ func _ready():
 		$CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/Label.text = "[center]" + nume
 		available_names.remove_at(idx)
 	print("Nume unic: ", nume)
+	ai_personality= "You are "+ nume +", a student of computer science"
 	var slot3 = $Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3
 	slot3.set_property({
-		 "TEXTURE": load("res://assets/" + ItemData.get_texture(id_item_get)),
-		 "CANTITATE": 1,
-		 "NUMBER": int(id_item_get),
-		 "NUME": ItemData.get_nume(id_item_get)
-	 })
+		"TEXTURE": load("res://assets/" + ItemData.get_texture(id_item_get)),
+		"CANTITATE": 1,
+		"NUMBER": int(id_item_get),
+		"NUME": ItemData.get_nume(id_item_get)
+	})
 
 	await get_tree().process_frame
 	healthbar_enemy.value = 0
@@ -68,31 +81,82 @@ func _ready():
 
 	get_quest()
 
-
+	# Colectează waypoint-urile de zi (grupa "loc")
 	for area in get_tree().get_nodes_in_group("loc"):
 		waypoints.append(area.global_position)
 
-	# Alege un waypoint care nu este ocupat
+	# La start, setăm target la primul loc
 	if waypoints.size() > 0:
 		var found_waypoint = false
-		var start_index = randi() % waypoints.size()  
+		var start_index = randi() % waypoints.size()
 		current_waypoint = start_index
-
 		while !found_waypoint:
 			if !WaypointManager.is_waypoint_occupied(waypoints[current_waypoint]):
 				found_waypoint = true
 			else:
 				current_waypoint += 1
 				if current_waypoint >= waypoints.size():
-					current_waypoint = 0  
+					current_waypoint = 0
 				if current_waypoint == start_index:
-					print("Toate waypoint-urile sunt ocupate la start!")
-					return 
-
-		WaypointManager.occupy_waypoint(waypoints[current_waypoint], self)
-		navigation_agent_2d.set_target_position(waypoints[current_waypoint])
+					break
+		if found_waypoint:
+			WaypointManager.occupy_waypoint(waypoints[current_waypoint], self)
+			navigation_agent_2d.set_target_position(waypoints[current_waypoint])
 
 func _physics_process(_delta):
+	# La 08 PM, toți pleacă spre camin
+	if hour.text == "08 PM" and not merge_la_camin and not in_camin:
+		# ---- ELIBEREAZĂ waypoint ocupat! -----
+		if WaypointManager.is_waypoint_occupied(waypoints[current_waypoint]):
+			WaypointManager.release_waypoint(waypoints[current_waypoint])
+		# --------------------------------------
+		merge_la_camin = true
+		var camin_list = []
+		for area in get_tree().get_nodes_in_group("camin"):
+			camin_list.append(area.global_position)
+		if camin_list.size() > 0:
+			var idx_c = randi() % camin_list.size()
+			navigation_agent_2d.set_target_position(camin_list[idx_c])
+		else:
+			velocity = Vector2.ZERO
+			animated_sprite_2d.play("idle")
+		return
+
+	# În timpul mersului la camin, nu mai faci alt pathfinding
+	if merge_la_camin:
+		if navigation_agent_2d.is_navigation_finished():
+			in_camin = true
+			merge_la_camin = false
+		else:
+			var next_pos = navigation_agent_2d.get_next_path_position()
+			var dir = (next_pos - global_position).normalized()
+			velocity = dir * Speed
+			move_and_slide()
+			movement()
+		return
+
+	# La 08 AM, toți reiau plimbarea între locuri
+	if hour.text == "08 AM" and in_camin:
+		in_camin = false
+		if waypoints.size() > 0:
+			var found_waypoint = false
+			var start_index = randi() % waypoints.size()
+			current_waypoint = start_index
+			while !found_waypoint:
+				if !WaypointManager.is_waypoint_occupied(waypoints[current_waypoint]):
+					found_waypoint = true
+				else:
+					current_waypoint += 1
+					if current_waypoint >= waypoints.size():
+						current_waypoint = 0
+					if current_waypoint == start_index:
+						break
+			if found_waypoint:
+				WaypointManager.occupy_waypoint(waypoints[current_waypoint], self)
+				navigation_agent_2d.set_target_position(waypoints[current_waypoint])
+
+	# ---- RESTUL LOGICII TALE ----
+
 	if interact_stud:
 		velocity = Vector2.ZERO
 		animated_sprite_2d.play("idle")
@@ -100,7 +164,6 @@ func _physics_process(_delta):
 
 	if waypoints.is_empty() or waiting:
 		return
-
 
 	if !at_destination and navigation_agent_2d.is_navigation_finished():
 		at_destination = true
@@ -111,13 +174,17 @@ func _physics_process(_delta):
 
 	if at_destination:
 		if !navigation_agent_2d.is_navigation_finished():
-			at_destination = false  
+			at_destination = false
 
 	var next_path_position = navigation_agent_2d.get_next_path_position()
 	var direction = (next_path_position - global_position).normalized()
 	velocity = direction * Speed
 	move_and_slide()
 	movement()
+
+
+# Restul funcțiilor rămân la fel (seeker_setup, select_new_direction, movement, quest etc.)
+
 
 func seeker_setup():
 	await get_tree().physics_frame
@@ -134,7 +201,6 @@ func select_new_direction():
 func movement():
 	if velocity != Vector2.ZERO:
 		if abs(velocity.x) > abs(velocity.y):
-			# Dacă mișcarea pe axa X este dominantă
 			if velocity.x < 0:
 				animated_sprite_2d.play("walk-stanga")
 				lastPosition = Vector2(-1, 0)
@@ -142,7 +208,6 @@ func movement():
 				animated_sprite_2d.play("walk-dreapta")
 				lastPosition = Vector2(1, 0)
 		else:
-			# Dacă mișcarea pe axa Y este dominantă
 			if velocity.y < 0:
 				animated_sprite_2d.play("walk-sus")
 				lastPosition = Vector2(0, -1)
@@ -158,32 +223,38 @@ func _on_color_timeout():
 func _on_change_direction_timeout():
 	select_new_direction()
 
-func _input(_event):
+func get_player():
+	return get_tree().get_first_node_in_group("player")
+
+func _input(event):
 	if Input.is_action_just_pressed("interact") and interact:
 		if not interact_stud:
-			# ➡️ intru în interacțiune: afişez UI, opresc agentul și animația
 			interact_stud = true
 			$CanvasLayer.visible = true
-			# dezactivez agentul de nav
-			# mă asigur că stau pe loc
 			velocity = Vector2.ZERO
 			animated_sprite_2d.play("idle")
+			get_player().can_move = false  
 		else:
-			# ⬅️ ies din interacțiune: ascund UI și reiau nav
 			interact_stud = false
 			$CanvasLayer.visible = false
-			# reactivez agentul de nav și îi dau target-ul curent
-					
+			get_player().can_move = true  
+			
+	if event.is_action("ui_text_newline") and $CanvasLayer.visible:
+		send_text_to_ai()
+
+
 func _on_atack_zone_body_entered(body: Node2D) -> void:
 	if body == player:
+		GameState.current_ai_npc = self
 		interact = true
-
 
 func _on_atack_zone_body_exited(body: Node2D) -> void:
 	if body == player:
-		interact_stud=false
+		if GameState.current_ai_npc == self:
+			GameState.current_ai_npc = null
+		interact_stud = false
 		$CanvasLayer.visible = false
-		$Quest.visible=false
+		$Quest.visible = false
 		interact = false
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
@@ -214,31 +285,33 @@ func _on_timer_timeout() -> void:
 	WaypointManager.occupy_waypoint(waypoints[current_waypoint], self)
 	navigation_agent_2d.set_target_position(waypoints[current_waypoint])
 	timer.stop()
-	
 
 func get_quest():
-	$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = "I want "+ ItemData.get_nume(id_item_provide) + " and you get "+ ItemData.get_nume(id_item_get) 
-	
-	
-func _on_button_pressed() -> void:
-	$Quest.visible=!$Quest.visible
+	$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = "I want " + ItemData.get_nume(id_item_provide) + " and you get " + ItemData.get_nume(id_item_get) 
 
+func _on_button_pressed() -> void:
+	$Quest.visible = !$Quest.visible
 
 func _on_accept_pressed() -> void:
 	$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = "[center]I will wait for it"
 	$Quest/PanelContainer/VBoxContainer/HBoxContainer/Accept.visible = false
-	$Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer.visible=true
+	$Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer.visible = true
 
-	
 func _on_decline_pressed() -> void:
-	$Quest/PanelContainer.visible=false
-
+	$Quest/PanelContainer.visible = false
 
 func _on_offer_pressed() -> void:
-	if $Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2.item_id==id_item_provide:
-		inv.add_item($Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3.item_id,1)
+	if $Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2.item_id == id_item_provide:
+		inv.add_item($Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3.item_id, 1)
 		$Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer2.clear_item()
 		$Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3.clear_item()
 		$Quest/PanelContainer/VBoxContainer/RichTextLabel.text = ""
-		$Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer.visible=false
+		$Quest/PanelContainer/VBoxContainer/HBoxContainer/Offer.visible = false
 		$Quest/PanelContainer/VBoxContainer/HBoxContainer/Accept.visible = true
+func send_text_to_ai():
+	if textEdit.text.strip_edges() == "":
+		return
+
+	textEdit.editable = false
+	var full_prompt = ai_personality + "\nPlayer: " + textEdit.text
+	GameState.global_ai_chat.say(full_prompt)

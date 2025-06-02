@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl0ym50w3lybq"]
 
-[ext_resource type="Script" path="res://User/inv.gd" id="1_ic7fr"]
+[ext_resource type="Script" uid="uid://w5iolt2nji6g" path="res://User/inv.gd" id="1_ic7fr"]
 [ext_resource type="Texture2D" uid="uid://cvuciyxi2hnw3" path="res://Sprout Lands - Sprites - Basic pack/Objects/Inventory_background.png" id="1_vr0hg"]
 [ext_resource type="PackedScene" uid="uid://bgc7bfs3whjaw" path="res://User/slot_container.tscn" id="2_f0a3l"]
 [ext_resource type="Texture2D" uid="uid://g2nknj28mrgx" path="res://Sprout Lands - Sprites - Basic pack/Objects/Inventory_select.png" id="4_kb5l3"]
