@@ -6,8 +6,7 @@ extends CanvasLayer
 @onready var text_edit_3      : TextEdit      = $TextEdit3
 @onready var submit_button    : Button        = $SubmitButton
 @onready var result_label     : Label         = $ResultLabel
-
-# Text despre fractali
+@onready var inv = get_node("/root/world/Inventar/Inv")
 const FRACTAL_TEXT := """
 Fractalii sunt structuri geometrice care se repetă la nesfârșit, 
 prezentând un grad de complexitate aparent infinit. Ele au fost 
@@ -23,15 +22,12 @@ nu mai este un număr întreg, ci un număr real, care reflectă gradul
 de detaliu al formei.  
 """
 
-# Întrebarea pe care o afișăm după text
 const QUESTION := "\nÎntrebare: Introdu trei termeni din text care descriu proprietatea de repetitivitate a fractalilor."
 
 func _ready() -> void:
-	# arătăm textul și întrebarea
 	rich_text_label.bbcode_enabled = false
 	rich_text_label.text = QUESTION
 
-	# conectăm butonul
 	submit_button.disabled = false
 	submit_button.connect("pressed", Callable(self, "_on_submit"))
 	# invisiblează label-ul de rezultat la început
@@ -51,5 +47,12 @@ func _on_submit() -> void:
 
 	if matches >= 2:
 		result_label.text = "Ai trecut!"
+		inv.drop_item("1",3)
+		$exit.visible=true
 	else:
 		result_label.text = "Ai picat!"
+		$exit.visible=true
+
+
+func _on_exit_pressed() -> void:
+	$".".visible=false

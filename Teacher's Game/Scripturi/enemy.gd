@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var Speed = 20
+var Speed = 50
 var health = 100
 @onready var animated_sprite_2d = $AnimatedSprite2D
 var original_color = Color(1, 1, 1, 1)
@@ -14,8 +14,8 @@ var moveDirection = Vector2.ZERO
 var lastPosition = Vector2(0, 1)
 @onready var detection = $detection
 @onready var player_hitbox = get_node("/root/world/player/player_hitbox")
-@onready var enemy_icon = $"../player/CanvasLayer/healthbar_enemy/enemy_icon"
-@onready var healthbar_enemy = $"../player/CanvasLayer/healthbar_enemy"
+#@onready var enemy_icon = $"../player/CanvasLayer/healthbar_enemy/enemy_icon"
+#@onready var healthbar_enemy = $"../player/CanvasLayer/healthbar_enemy"
 @onready var inv = get_node("/root/world/Inventar/Inv")
 var interact = false
 @export var target: Node2D = null
@@ -32,10 +32,31 @@ var id_item_provide = ""
 @onready var hour = get_node("/root/world/Cycle_d_n/CanvasLayer/VBoxContainer/HBoxContainer/%Hour")
 @onready var ora = get_node("/root/world/Cycle_d_n")
 @export var ai_personality: String = ""
+@onready var icon: TextureRect = $CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/TextureRect
 
 
 @onready var aiText: RichTextLabel = $CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/RichTextLabel
 @onready var textEdit: TextEdit = $CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/TextEdit
+
+var available_icons := [
+	preload("res://icons/icon1.jpeg"),
+	preload("res://icons/icon2.jpeg"),
+	preload("res://icons/icon3.jpeg"),
+	preload("res://icons/icon4.jpeg"),
+	preload("res://icons/icon5.jpeg"),
+	preload("res://icons/icon6.jpeg"),
+	preload("res://icons/icon7.jpeg"),
+	preload("res://icons/icon8.jpeg"),
+	preload("res://icons/icon9.jpeg"),
+	preload("res://icons/icon10.jpeg"),
+	preload("res://icons/icon11.jpeg"),
+	preload("res://icons/icon12.jpeg"),
+	preload("res://icons/icon13.jpeg"),
+	preload("res://icons/icon14.jpeg"),
+	preload("res://icons/icon15.jpeg")
+]
+
+
 
 var available_names := [
 	"Ana", "Bogdan", "Cristina", "Darius", "Elena",
@@ -46,12 +67,22 @@ var available_names := [
 var rng := RandomNumberGenerator.new()
 var nume= ""
 
-# Flags pentru cămin
 var merge_la_camin = false
 var in_camin = false
 
 func _ready():
-	
+	if available_names.size() > 0:
+		var idx = rng.randi_range(0, available_names.size() - 1)
+		nume = available_names[idx]
+		$CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/Label.text = "[center]" + nume
+		available_names.remove_at(idx)
+		print("Nume unic: ", nume)
+
+
+	if available_icons.size() > 0:
+		var idx_icon = rng.randi_range(0, available_icons.size() - 1)
+		icon.texture = available_icons[idx_icon]
+		available_icons.remove_at(idx_icon)
 	randomize()
 	var rnd = randi() % 10 + 1
 	var rndi = randi() % 10 + 1
@@ -65,7 +96,7 @@ func _ready():
 		$CanvasLayer/PanelContainer/VBoxContainer/VBoxContainer2/Label.text = "[center]" + nume
 		available_names.remove_at(idx)
 	print("Nume unic: ", nume)
-	ai_personality= "You are "+ nume +", a student of computer science"
+	ai_personality= "You are "+ nume +" , a computer science student known for your sharp logic and unwavering confidence."
 	var slot3 = $Quest/PanelContainer/VBoxContainer/HBoxContainer2/SlotContainer3
 	slot3.set_property({
 		"TEXTURE": load("res://assets/" + ItemData.get_texture(id_item_get)),
@@ -75,7 +106,7 @@ func _ready():
 	})
 
 	await get_tree().process_frame
-	healthbar_enemy.value = 0
+	#saw
 	add_to_group("enemy_hitbox")
 	call_deferred("seeker_setup")
 
@@ -85,7 +116,7 @@ func _ready():
 	for area in get_tree().get_nodes_in_group("loc"):
 		waypoints.append(area.global_position)
 
-	# La start, setăm target la primul loc
+
 	if waypoints.size() > 0:
 		var found_waypoint = false
 		var start_index = randi() % waypoints.size()
@@ -104,9 +135,9 @@ func _ready():
 			navigation_agent_2d.set_target_position(waypoints[current_waypoint])
 
 func _physics_process(_delta):
-	# La 08 PM, toți pleacă spre camin
+
 	if hour.text == "08 PM" and not merge_la_camin and not in_camin:
-		# ---- ELIBEREAZĂ waypoint ocupat! -----
+
 		if WaypointManager.is_waypoint_occupied(waypoints[current_waypoint]):
 			WaypointManager.release_waypoint(waypoints[current_waypoint])
 		# --------------------------------------
@@ -122,7 +153,7 @@ func _physics_process(_delta):
 			animated_sprite_2d.play("idle")
 		return
 
-	# În timpul mersului la camin, nu mai faci alt pathfinding
+
 	if merge_la_camin:
 		if navigation_agent_2d.is_navigation_finished():
 			in_camin = true
@@ -135,7 +166,7 @@ func _physics_process(_delta):
 			movement()
 		return
 
-	# La 08 AM, toți reiau plimbarea între locuri
+
 	if hour.text == "08 AM" and in_camin:
 		in_camin = false
 		if waypoints.size() > 0:
@@ -155,7 +186,7 @@ func _physics_process(_delta):
 				WaypointManager.occupy_waypoint(waypoints[current_waypoint], self)
 				navigation_agent_2d.set_target_position(waypoints[current_waypoint])
 
-	# ---- RESTUL LOGICII TALE ----
+
 
 	if interact_stud:
 		velocity = Vector2.ZERO
@@ -183,7 +214,6 @@ func _physics_process(_delta):
 	movement()
 
 
-# Restul funcțiilor rămân la fel (seeker_setup, select_new_direction, movement, quest etc.)
 
 
 func seeker_setup():

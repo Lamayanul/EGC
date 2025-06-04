@@ -7,45 +7,45 @@
 	 },
 
  "1":{
-  "texture" : "Egg_item.png",
+  "texture" : "ai.png",
   "cantitate":1,
   "number":1,
-  "nume":"ou",
+  "nume":"examen_ai",
 	 },
 	
 "2":{
-	"texture":"axe.png",
+	"texture":"pl.png",
 	"cantitate":1,
 	"number":2,
-	"nume":"topor",
+	"nume":"examen_pl",
 	},
 	
 "3":{
-	"texture":"grau.png",
+	"texture":"rc.png",
 	"cantitate":1,
 	"number":3,
-	"nume":"seminte grau",
+	"nume":"examen_rc",
 	},
 	
 "4":{
-	"texture":"grau_de_recoltat.png",
+	"texture":"egc.png",
 	"cantitate":1,
 	"number":4,
-	"nume":"grau",
+	"nume":"examen_egc",
 	},
 	
 "5":{
-	"texture":"vinete_seminte.png",
+	"texture":"gac.png",
 	"cantitate":1,
 	"number":5,
-	"nume":"seminte vinete",
+	"nume":"examen_gac",
 	},
 	
 "6":{
-	"texture":"lemn.png",
+	"texture":"mate.png",
 	"cantitate":1,
 	"number":6,
-	"nume":"lemn",
+	"nume":"examen_mate",
 	},
 	
 "7":{
@@ -62,99 +62,63 @@
 	"nume":"berry",
 	},
 "9":{
-	"texture":"hoe.png",
-	"cantitate":1,
-	"number":9,
-	"nume":"hoe",
-	},
-"10":{
-	"texture":"pickaxe.png",
-	"cantitate":1,
-	"number":10,
-	"nume":"pickaxe",
-	},
-"11":{
-	"texture":"piatra-item.png",
-	"cantitate":1,
-	"number":11,
-	"nume":"piatra",
-	},
-"12":{
-	"texture":"gard_pivot.png",
-	"cantitate":1,
-	"number":12,
-	"nume":"gard",
-	},
-"13":{
-	"texture":"shield.png",
-	"cantitate":1,
-	"number":13,
-	"nume":"scut",
-	},
-"14":{
-	"texture":"gambling_mace.png",
-	"cantitate":1,
-	"number":14,
-	"nume":"Buzduganul norocului",
-	},
-"15":{
 	"texture":"pie.png",
 	"cantitate":1,
-	"number":15,
+	"number":9,
 	"nume":"apple pie",
 	},
-"16":{
-	"texture":"podea_tile.png",
-	"cantitate":1,
-	"number":16,
-	"nume":"podea",
-	},
-"17":{
-	"texture":"roof.png",
-	"cantitate":1,
-	"number":17,
-	"nume":"roof",
-	},
-"18":{
+"10":{
 	"texture":"backpack.png",
 	"cantitate":1,
-	"number":18,
+	"number":10,
 	"nume":"backpack",
 	},
-"19":{
-	"texture":"blue_lightBulb.png",
+"11":{
+	"texture":"clatite.png",
 	"cantitate":1,
-	"number":19,
-	"nume":"bec albastru",
+	"number":11,
+	"nume":"clatite",
 	},
-"20":{
-	"texture":"red_lightBulb.png",
+"12":{
+	"texture":"gogosi.png",
 	"cantitate":1,
-	"number":20,
-	"nume":"bec rosu",
+	"number":12,
+	"nume":"gogosi",
 	},
-"21":{
-	"texture":"orange_lightBulb.png",
+"13":{
+	"texture":"jeleu.png",
 	"cantitate":1,
-	"number":21,
-	"nume":"bec portocaliu",
+	"number":13,
+	"nume":"jeleu",
 	},
-"22":{
-	"texture":"water_can.png",
+"14":{
+	"texture":"prajituri.png",
 	"cantitate":1,
-	"number":22,
-	"nume":"stropitoare",
+	"number":14,
+	"nume":"prajituri",
 	},
-"23":{
-	"texture":"lamp.png",
+"15":{
+	"texture":"tarta.png",
 	"cantitate":1,
-	"number":23,
-	"nume":"felinar",
+	"number":15,
+	"nume":"tarta",
 	},
-"24":{
-	"texture":"graunte.png",
+"16":{
+	"texture":"tort.png",
 	"cantitate":1,
-	"number":24,
-	"nume":"graunte",
+	"number":16,
+	"nume":"tort",
+	},
+"17":{
+	"texture":"turta dulce.png",
+	"cantitate":1,
+	"number":17,
+	"nume":"turta_dulce",
+	},
+"18":{
+	"texture":"placinta de lamai.png",
+	"cantitate":1,
+	"number":18,
+	"nume":"placinta de lamai",
 	},
 }

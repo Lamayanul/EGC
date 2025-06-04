@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_v6wte")
 texture = ExtResource("2_66c1g")
-name = "Femeie"
-dialogue = "Buna!"
+name = "Profesaora"
+dialogue = "Buna ziua!"
 path_option = ""
 options = Array[ExtResource("1_v6wte")]([ExtResource("2_p7ban")])

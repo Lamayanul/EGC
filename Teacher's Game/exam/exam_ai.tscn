@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://boavdagt1u15v"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -325.5
+offset_bottom = 325.5
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]AI:
+Ce tip de AI învață din date?
+Răspuns: Machine Learning
+
+Cum se numește rețeaua folosită la recunoaștere imagini?
+Răspuns: Convoluțională
+
+Algoritmul popular pentru clasificare binară?
+Răspuns: Logistică
+
+Tip de AI care folosește straturi?
+Răspuns: Neurală
+
+Ce este RL în AI?
+Răspuns: Reinforcement Learning
+
+Cum se numește procesul de corectare automată a greșelilor?
+Răspuns: Backpropagation
+
+Ce este NLP?
+Răspuns: Procesare limbaj
+
+Care este opusul “supervizat” în ML?
+Răspuns: Nesupervizat
+
+Ce este o decizie bazată pe “if-then-else”?
+Răspuns: Arbore
+
+Cum se numește programul AI care joacă șah?
+Răspuns: Engine"
+fit_content = true

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://gtwaq8ex0es0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -325.5
+offset_bottom = 325.5
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]RC:
+Ce protocol este folosit pentru trimiterea emailurilor?
+Răspuns: SMTP
+
+Cum se numește dispozitivul care interconectează două sau mai multe rețele diferite?
+Răspuns: Router
+
+Ce prescurtare are adresa de identificare a unei plăci de rețea?
+Răspuns: MAC
+
+Cum se numește protocolul de bază pentru internet?
+Răspuns: TCP/IP
+
+Ce tehnologie permite comunicarea fără fir?
+Răspuns: Wi-Fi
+
+Ce port standard folosește HTTP?
+Răspuns: 80
+
+Cum se numește rețeaua locală de calculatoare?
+Răspuns: LAN
+
+Care este protocolul pentru transfer de fișiere?
+Răspuns: FTP
+
+Ce dispozitiv amplifică semnalul într-o rețea?
+Răspuns: Repeater
+
+Cum se numește sistemul care traduce nume de domenii în adrese IP?
+Răspuns: DNS"
+fit_content = true

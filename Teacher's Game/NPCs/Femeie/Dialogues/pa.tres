@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_y0b3b")
-name = "Femeie"
+name = "Profesoara"
 dialogue = ""
-path_option = "Pa"
+path_option = "Am o intrebare!"
 options = Array[ExtResource("1_y0b3b")]([])

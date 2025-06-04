@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_1xmga")
-name = "Femeie"
+name = "Profesoara"
 dialogue = ""
-path_option = "Nu,nu esti!"
+path_option = "Imediat!"
 options = Array[ExtResource("1_1xmga")]([])

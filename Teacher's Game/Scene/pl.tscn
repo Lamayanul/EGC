@@ -97,3 +97,19 @@ offset_top = -38.536
 offset_right = 178.864
 offset_bottom = 38.464
 text = "Punctaj"
+
+[node name="exit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105
+anchor_top = 0.835
+anchor_right = 0.105
+anchor_bottom = 0.835
+offset_left = -37.96
+offset_top = -26.08
+offset_right = 39.04
+offset_bottom = 25.92
+grow_vertical = 0
+text = "EXIT"
+
+[connection signal="pressed" from="Control/exit" to="Control" method="_on_exit_pressed"]

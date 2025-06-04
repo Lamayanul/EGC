@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bbssy2dmkx2b"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -325.5
+offset_bottom = 325.5
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]MATE:
+Cum se numește rezultatul unei adunări?
+Răspuns: Sumă
+
+Care este derivata lui x²?
+Răspuns: 2x
+
+Cum se numește linia care împarte un unghi în două unghiuri egale?
+Răspuns: Bisectoare
+
+Câte grade are un unghi drept?
+Răspuns: 90
+
+Care este formula ariei cercului?
+Răspuns: πr²
+
+Care este cel mai mic număr prim?
+Răspuns: 2
+
+Cum se numește triunghiul cu toate laturile egale?
+Răspuns: Echilateral
+
+Ce nume poartă rezultatul unei înmulțiri?
+Răspuns: Produs
+
+Care este rădăcina pătrată a lui 49?
+[center]Răspuns: 7
+
+Cum se numește segmentul care unește centrul cercului cu un punct de pe cerc?
+Răspuns: Rază"
+fit_content = true

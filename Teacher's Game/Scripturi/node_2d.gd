@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var power: Area2D = get_node("/root/world/Power_generator/area")  # Generatorul principal
-@onready var power_interact: Area2D = get_node("/root/world/Power_generator/area_interact") 
-@onready var powg= get_node("/root/world/Power_generator") 
-@onready var pow_area= get_node("/root/world/Power_generator/area_interact") 
+#@onready var power: Area2D = get_node("/root/world/Power_generator/area")  # Generatorul principal
+#@onready var power_interact: Area2D = get_node("/root/world/Power_generator/area_interact") 
+#@onready var powg= get_node("/root/world/Power_generator") 
+#@onready var pow_area= get_node("/root/world/Power_generator/area_interact") 
 
 var connected_areas: Array = []  
 var used_areas: Array = []  
@@ -19,18 +19,18 @@ func _ready() -> void:
 func update_connections() -> void:
 	connected_areas.clear()  
 
-	for node in get_tree().get_nodes_in_group("pillar"):
-		if node is Area2D and node != power:
-			if pow_area.overlaps_area(node):
-				
-				connected_areas.append(node)
-	var electric_pillars = get_tree().get_nodes_in_group("LightSource")
-	for pillar in electric_pillars:
-		var area_node = pillar.get_node("area")  # Accesează nodul Area2D asociat fiecărui LightSource
-		if area_node and pow_area.overlaps_area(area_node):  # Verifică suprapunerea între pow_area și area_node
-			pillar.conect = true  # Setează conectarea pentru pilonul respectiv
-		else:
-			pillar.conect = false  # Asigură-te că pilonii neconectați nu sunt marcați
+	#for node in get_tree().get_nodes_in_group("pillar"):
+		#if node is Area2D and node != power:
+			#if pow_area.overlaps_area(node):
+				#
+				#connected_areas.append(node)
+	#var electric_pillars = get_tree().get_nodes_in_group("LightSource")
+	#for pillar in electric_pillars:
+		#var area_node = pillar.get_node("area")  # Accesează nodul Area2D asociat fiecărui LightSource
+		#if area_node and pow_area.overlaps_area(area_node):  # Verifică suprapunerea între pow_area și area_node
+			#pillar.conect = true  # Setează conectarea pentru pilonul respectiv
+		#else:
+			#pillar.conect = false  # Asigură-te că pilonii neconectați nu sunt marcați
 
 
 
@@ -45,10 +45,7 @@ func update_connections() -> void:
 
 
 func _process(_delta: float) -> void:
-
-	if powg.legat == true and connected_areas.is_empty():
-		update_connections()
-	update_curves()
+	pass
 
 	
 	
@@ -62,9 +59,9 @@ func update_curves() -> void:
 		if used_areas.has(area_2d):
 			continue
 
-		if area_2d != null:
-			draw_bezier_curve(line_2d, power.global_position, area_2d.global_position)
-			used_areas.append(area_2d) 
+		#if area_2d != null:
+			#draw_bezier_curve(line_2d, power.global_position, area_2d.global_position)
+			#used_areas.append(area_2d) 
 
 		else:
 			line_2d.clear_points()

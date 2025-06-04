@@ -2,7 +2,7 @@ extends Node2D
 
 @export var FallingItemScene: PackedScene
 @export var spawn_interval := 0.5
-
+@onready var inv = get_node("/root/world/Inventar/Inv")
 @onready var spawn_timer   := $SpawnTimer
 @onready var score_label   := $"../ScoreLabel"
 @onready var penalty_label := $"../PenaltyLabel"
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	var item = FallingItemScene.instantiate()
-	# Alege aleator bug sau comandă
+
 	if randi() % 2 == 0:
 		item.get_node("Label").text = bug_words[randi() % bug_words.size()]
 		item.is_bug = true
@@ -31,7 +31,6 @@ func _on_spawn_timer_timeout() -> void:
 		item.get_node("Label").text = command_words[randi() % command_words.size()]
 		item.is_bug = false
 
-	# Poziție aleatorie pe orizontală, deasupra ecranului
 	var vw = get_viewport_rect().size.x
 	item.position = Vector2(randi() % int(vw), -20)
 
@@ -55,8 +54,11 @@ func _update_labels() -> void:
 func _check_end_conditions() -> void:
 	if score >= 10:
 		_end_game("Ai câștigat!")
+		inv.drop_item("1",5)
+		$"../exit".visible=true
 	elif penalty >= 5:
 		_end_game("Ai pierdut!")
+		$"../exit".visible=true
 
 func _end_game(message: String) -> void:
 	# Oprește spawn-ul
@@ -65,6 +67,9 @@ func _end_game(message: String) -> void:
 	for child in get_children():
 		if child is Area2D:
 			child.queue_free()
-	# Afișează mesajul final în ScoreLabel și ascunde PenaltyLabel
 	score_label.text = "%s\nFinal Score: %d\nPenalties: %d" % [message, score, penalty]
 	penalty_label.visible = false
+
+
+func _on_exit_pressed() -> void:
+	$"..".visible=false

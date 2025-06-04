@@ -1228,10 +1228,9 @@ shape = SubResource("CircleShape2D_brlc1")
 path_desired_distance = 5.0
 path_max_distance = 50.0
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 50.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

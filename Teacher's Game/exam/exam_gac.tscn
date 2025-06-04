@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bi0w0honqbpx1"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -325.5
+offset_bottom = 325.5
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]GAC:
+Cum se numește dispozitivul principal de ieșire pentru grafică?
+Răspuns: Monitor
+
+Ce tip de grafică folosește pixeli?
+Răspuns: Raster
+
+Care este abrevierea pentru “Red Green Blue”?
+Răspuns: RGB
+
+Cum se numește memoria specială pentru stocarea imaginilor pe placă video?
+Răspuns: VRAM
+
+Ce model matematic reprezintă obiecte 3D ca set de puncte și muchii?
+Răspuns: Mesh
+
+Ce algoritm se folosește pentru umbrire realistă a suprafețelor?
+Răspuns: Phong
+
+Care este prescurtarea pentru “Graphics Processing Unit”?
+Răspuns: GPU
+
+Cum se numește conversia coordonatelor 3D în coordonate 2D pe ecran?
+Răspuns: Proiecție
+
+Ce format de fișier imagine suportă transparență?
+Răspuns: PNG
+
+Ce structură de date se folosește pentru a reprezenta culorile pe un pixel?
+Răspuns: Paletă"
+fit_content = true

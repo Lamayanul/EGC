@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ci3dequ5tfe28"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -325.5
+offset_bottom = 325.5
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]PL:
+Care este poarta logică cu ieșirea adevărată doar dacă ambele intrări sunt adevărate?
+Răspuns: AND
+
+Cum se numește poarta logică care inversează semnalul de intrare?
+Răspuns: NOT
+
+Ce poartă logică are ieșirea adevărată dacă cel puțin una dintre intrări este adevărată?
+Răspuns: OR
+
+Ce tip de circuit memorează un singur bit?
+Răspuns: Latch / Flip-flop
+
+Ce poartă logică are ieșirea adevărată doar dacă exact una dintre intrări este adevărată?
+Răspuns: XOR
+
+Cum se numește tabela ce descrie toate combinațiile posibile de intrări și ieșiri pentru o funcție logică?
+Răspuns: Tabel adevăr
+
+Cum se numește forma minimizată a unei funcții logice?
+Răspuns: Forma canonică / Minimă
+
+Care este poarta logică universală ce poate implementa orice funcție logică?
+Răspuns: NAND
+
+Ce circuit realizează conversia codului binar în cod zecimal?
+Răspuns: Decoder
+
+Ce reprezintă “hazardul” într-un circuit logic?
+Răspuns: Glitch
+"
+fit_content = true

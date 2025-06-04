@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	if position.y > get_viewport_rect().size.y + 20:
 		queue_free()  # scapă şi dispar la baza ecranului
 
-func _on_input_event(viewport, event, shape_idx) -> void:
+func _on_input_event(_sdviewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		emit_signal("clicked", is_bug)
 		queue_free()

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cbobfi1lg7esm"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -325.5
+offset_bottom = 325.5
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]EGC:
+Cum se numește punctul care formează imaginea pe un ecran?
+Răspuns: Pixel
+
+Cum se numește linia dintre două puncte într-o imagine vectorială?
+Răspuns: Segment
+
+Ce este o succesiune de pixeli orizontali într-o imagine?
+Răspuns: Linie
+
+Ce tip de obiect geometric are trei vârfuri?
+Răspuns: Triunghi
+
+Cum se numește forma geometrică cu patru laturi egale?
+Răspuns: Pătrat
+
+Care este sinonimul pentru imagine raster?
+Răspuns: Bitmap
+
+Ce element grafic este folosit pentru desenarea cercurilor?
+Răspuns: Arc
+
+Cum se numește procesul de umplere a unei forme cu culoare?
+Răspuns: Fill
+
+Ce este o formă închisă cu margini netede în grafică vectorială?
+Răspuns: Curba Bézier
+
+Cum se numește paleta folosită pentru culori pe 8 biți?
+Răspuns: Paletă"
+fit_content = true

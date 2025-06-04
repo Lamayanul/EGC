@@ -13,8 +13,8 @@ extends PanelContainer
 @onready var slot_container_chest_3 = get_node("/root/world/Chest/CanvasLayer/GridContainer/SlotContainer3")
 @onready var slot_container_chest_4 = get_node("/root/world/Chest/CanvasLayer/GridContainer/SlotContainer4")
 
-@onready var slot_container_8: Slot = get_node("/root/world/Electricity_pillar/CanvasLayer/GridContainer/SlotContainer")
-@onready var slot_container_9: Slot = get_node("/root/world/Electricity_pillar/CanvasLayer/GridContainer/SlotContainer2")
+#@onready var slot_container_8: Slot = get_node("/root/world/Electricity_pillar/CanvasLayer/GridContainer/SlotContainer")
+#@onready var slot_container_9: Slot = get_node("/root/world/Electricity_pillar/CanvasLayer/GridContainer/SlotContainer2")
 
 
 @onready var chest = get_node("/root/world/Chest")
@@ -123,7 +123,36 @@ func _on_slot_selected(slot: Slot):
 		info_label.text = "[center]ITEM: " + slot.get_nume() + "[/center]"
 		info_label.visible = false
 		color_rect.visible = false
-
+		if slot.get_id()=="1":
+			$"../../ai".visible=true
+		else:
+			$"../../ai".visible=false
+			
+		if slot.get_id()=="2":
+			$"../../pl".visible=true
+		else:
+			$"../../pl".visible=false
+			
+		if slot.get_id()=="3":
+			$"../../rc".visible=true
+		else:
+			$"../../rc".visible=false
+			
+		if slot.get_id()=="4":
+			$"../../egc".visible=true
+		else:
+			$"../../egc".visible=false
+			
+		if slot.get_id()=="5":
+			$"../../gac".visible=true
+		else:
+			$"../../gac".visible=false
+			
+		if slot.get_id()=="6":
+			$"../../mate".visible=true
+			
+		else:
+			$"../../mate".visible=false
 	# Actualizează poziția selectorului
 	update_selector_position(slot)
 	
@@ -325,12 +354,12 @@ func eat():
 	if slot is Slot and slot.filled:
 		var ID = slot.get_id()
 		
-		if ID == "1" || ID=="8":  # Verificăm dacă itemul este de tip mâncare
+		if ID == "9" || ID=="8":  # Verificăm dacă itemul este de tip mâncare
 			var cantitate_de_mancat = 1  # Cantitatea de mâncare consumată
 			player.health += 10  # Creștem sănătatea jucătorului
-			player.healthbar_player.value = player.health  # Actualizăm bara de sănătate
-			if player.health > 100:  # Asigurăm că sănătatea nu trece peste 100
-				player.health = 100 
+#s			player.healthbar_player.value = player.health  # Actualizăm bara de sănătate
+			#if player.health > 100:  # Asigurăm că sănătatea nu trece peste 100
+				#player.health = 100 
 
 			# Reducem cantitatea din item și dacă rămâne 0, golim slotul
 			if slot.decrease_cantitate(cantitate_de_mancat):

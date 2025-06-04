@@ -13,7 +13,7 @@ var current_question := 0
 var score := 0
 var current_binary := ""
 var rng := RandomNumberGenerator.new()
-
+@onready var inv = get_node("/root/world/Inventar/Inv")
 func _ready() -> void:
 	rng.randomize()
 	timer_node.one_shot = true
@@ -21,11 +21,10 @@ func _ready() -> void:
 	timer_node.connect("timeout", Callable(self, "_on_time_up"))
 	#input_box.connect("text_entered", Callable(self, "_on_submit"))
 
-	# Inițial afișăm punctajul 0
 	punctaj.text = "0"
 	_start_question()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not timer_node.is_stopped():
 		var t = ceil(timer_node.time_left)
 		timer_label.text = "Time: %d" % t
@@ -35,11 +34,9 @@ func _start_question() -> void:
 		_end_game()
 		return
 
-	# Generăm un număr 0–31 și transformăm în 5 biți
 	var n = rng.randi_range(0, 31)
 	current_binary = _to_5bit_binary(n)
 
-	# Afișăm în RichTextLabel
 	binary_label.bbcode_enabled = true
 	binary_label.bbcode_text = "[center][b]%s[/b][/center]" % current_binary
 
@@ -83,10 +80,15 @@ func _binary_to_int(bin_str: String) -> int:
 
 func _end_game() -> void:
 	# Mesaj final în binary_label
-	var msg = "Ai trecut" if (score>=5) else "Ai picat"
+	var msg = ("Ai trecut" and inv.drop_item("1",2)) if (score>=5) else "Ai picat"
+	$exit.visible=true
 	binary_label.bbcode_enabled = true
 	binary_label.bbcode_text = "[center]%s\nScor: %d/%d[/center]" \
 		% [msg, score, total_questions]
 
 	timer_label.text = ""
 	input_box.editable = false
+
+
+func _on_exit_pressed() -> void:
+	$"..".visible=false

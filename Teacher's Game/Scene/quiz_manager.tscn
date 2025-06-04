@@ -1,0 +1,122 @@
+[gd_scene load_steps=3 format=3 uid="uid://da5kjxa1wjs2p"]
+
+[ext_resource type="Script" uid="uid://b2mop4nujpm6x" path="res://Scripturi/quiz_manager.gd" id="1_wxgwt"]
+
+[sub_resource type="Theme" id="Theme_wxgwt"]
+default_font_size = 50
+
+[node name="QuizManager" type="Node2D"]
+script = ExtResource("1_wxgwt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuestionLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="Question0" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question1" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question2" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question3" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question4" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question5" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question6" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question7" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question8" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Question9" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Answer0" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer1" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+virtual_keyboard_enabled = false
+
+[node name="Answer2" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer3" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer4" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer5" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer6" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer7" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer8" type="TextEdit" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Answer9" type="TextEdit" parent="VBoxContainer/GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="final" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 212.0
+offset_top = 121.0
+offset_right = 886.0
+offset_bottom = 487.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wxgwt")
+bbcode_enabled = true
+text = "[center]"

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_lbgxt")
 texture = ExtResource("2_erup6")
-name = "Femeie"
-dialogue = "Sunt Capsunica."
+name = "Profesoara"
+dialogue = "Incepem ora!"
 path_option = "Buna!"
 options = Array[ExtResource("1_lbgxt")]([ExtResource("2_mnohq"), ExtResource("3_makn0")])
